@@ -39,8 +39,12 @@ class Database:
 
     def load_data(self) -> list[Data]:
         dicts = []
-        with open(self.path, "r") as file:
-            dicts = json.load(file)
+        try:
+            with open(self.path, "r") as file:
+                dicts = json.load(file)
+        except FileNotFoundError:
+            with open(self.path, "w+") as file:
+                file.write("[]")
         self.data = [Data(x["server_id"], x["roleless_id"], x["role_id"]) for x in dicts]
         return self.data
 
