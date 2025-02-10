@@ -5,6 +5,8 @@ from log import log_warning, log_info
 from client import MyClient
 from database import Data
 
+print("Hello world!")
+
 AUTH_TOKEN = os.environ.get("AUTH_TOKEN")
 if AUTH_TOKEN is None:
     log_warning("Auth. token failed to load from environment variables")
